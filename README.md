@@ -1,0 +1,2 @@
+# locq
+Android logcat query.
