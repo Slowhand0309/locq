@@ -30,6 +30,10 @@ Session::~Session() {
 
 }
 
+void Session::write(Emitter &emitter) {
+  fout << emitter;
+}
+
 void Session::write(const char *text) {
   fout << text;
 }

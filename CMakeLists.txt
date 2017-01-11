@@ -9,7 +9,8 @@ include_directories(
 add_compile_options(-std=c++11)
 
 add_executable(locq
-  src/ansi.cpp
   src/session.cpp
+  src/view/view.cpp
+  src/view/query_view.cpp
   src/main.cpp
 )

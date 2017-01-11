@@ -2,14 +2,12 @@
  * Copyright 2017 Slowhand0309
  * All rights reserved.
  */
-#include "ansi.h"
-#include "session.h"
-#include <fstream>
+#include "view/query_view.h"
 
 using namespace locq;
 
 int main(int argc, char *argv[]) {
-
+#if 0
   Session *session = new Session();
 
   for (;;) {
@@ -26,5 +24,11 @@ int main(int argc, char *argv[]) {
   }
 
   delete session;
+#endif
+
+  QueryView *qv = new QueryView();
+  qv->draw();
+  delete qv;
+
   return 1;
 }
