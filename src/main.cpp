@@ -4,13 +4,22 @@
  */
 #include "ansi.h"
 #include "session.h"
+#include <fstream>
 
 using namespace locq;
 
 int main(int argc, char *argv[]) {
 
   Session *session = new Session();
-  session->write("hogehogeaaa!!!!");
+
+  for (;;) {
+    char ch = session->getchar();
+    if (ch != 0) {
+      session->write("hogehogeaaa!!!!");
+      break;
+    }
+  }
+
   delete session;
   return 1;
 }

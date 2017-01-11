@@ -12,8 +12,14 @@ public:
   virtual ~Session();
 
   void write(const char *text);
+  char getchar();
 
 private:
+  int available();
+
+  int fd;
+  fd_set rfds;
+
   ifstream fin;
   ofstream fout;
   struct termios org;
