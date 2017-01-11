@@ -4,6 +4,8 @@
 #include <cstdarg>
 #include <sstream>
 #include <string>
+#include <fstream>
+#include <termios.h>
 
 using namespace std;
 

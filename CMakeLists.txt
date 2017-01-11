@@ -6,7 +6,10 @@ include_directories(
   include
 )
 
+add_compile_options(-std=c++11)
+
 add_executable(locq
-  src/main.cpp
   src/ansi.cpp
+  src/session.cpp
+  src/main.cpp
 )
