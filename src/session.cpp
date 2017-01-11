@@ -34,11 +34,14 @@ void Session::write(const char *text) {
   fout << text;
 }
 
+void Session::write(string str) {
+  fout << str;
+}
+
 char Session::getchar() {
   char ch = 0;
   if (available()) {
-    printf("available!!\n");
-    ch = read(fd, &ch, 1);
+    read(fd, &ch, 1);
   }
   return ch;
 }

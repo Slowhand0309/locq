@@ -12,6 +12,7 @@ public:
   virtual ~Session();
 
   void write(const char *text);
+  void write(string str);
   char getchar();
 
 private:

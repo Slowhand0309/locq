@@ -14,9 +14,14 @@ int main(int argc, char *argv[]) {
 
   for (;;) {
     char ch = session->getchar();
-    if (ch != 0) {
-      session->write("hogehogeaaa!!!!");
+    if (ch == 'q') {
       break;
+    } else if (ch == 0) {
+      continue;
+    } else {
+      cout << "input --> " << ch << endl;
+      char hh = cin.get();
+      cout << "cin --> " << hh << endl;
     }
   }
 
