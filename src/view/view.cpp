@@ -3,12 +3,12 @@
 namespace locq {
 
 View::View()
-  : View(new Session())
+  : View(cout)
 {
 }
 
-View::View(Session *s)
-  : session(s)
+View::View(ostream &_os)
+  : os(_os)
 {
 }
 

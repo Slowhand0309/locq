@@ -8,11 +8,20 @@ class QueryView : public View
 {
 public:
   QueryView();
-  QueryView(Session *s);
+  QueryView(ostream &_os);
   virtual ~QueryView();
 
   virtual void draw();
 
+  void setup(string *str, vector<string> *list, int *idx);
+
+private:
+  string toMatchText(string org, string matcher);
+  string toSelectedMatchText(string org, string matcher);
+
+  int *index;
+  string *matcher;
+  vector<string> *dataList;
 };
 
 } // namespace locq

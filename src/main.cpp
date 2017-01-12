@@ -26,7 +26,15 @@ int main(int argc, char *argv[]) {
   delete session;
 #endif
 
+  int index = 0;
+  string text = "android";
+  vector<string> list;
+  list.push_back("12345fdhfd_android_fdsfdsf");
+  list.push_back("67889dfsfdaandroidfdsdf");
+  list.push_back("abcder54y5ey5yfhd");
+
   QueryView *qv = new QueryView();
+  qv->setup(&text, &list, &index);
   qv->draw();
   delete qv;
 

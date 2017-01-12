@@ -6,6 +6,7 @@
 #include <string>
 #include <fstream>
 #include <termios.h>
+#include <vector>
 
 using namespace std;
 

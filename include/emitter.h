@@ -75,14 +75,26 @@ public:
     return *this;
   }
 
+  Emitter& background(string text, ANSICOLOR c) {
+    ostringstream stream;
+    stream << "\e[" << (c + 10) << 'm' << text << "\e[0m";
+    str += stream.str();
+    return *this;
+  }
+
   Emitter& emit(int n, char code) {
     ostringstream stream;
     stream << "\e[" << n << code;
     str += stream.str();
     return *this;
   }
-  string str;
+
+  string getRow() {
+    return str;
+  }
+
 private:
+  string str;
 
   ostream& operator()(ostream& os) {
     os << str;
