@@ -13,5 +13,6 @@ add_executable(locq
   src/session.cpp
   src/view/view.cpp
   src/view/query_view.cpp
+  src/executor.cpp
   src/main.cpp
 )

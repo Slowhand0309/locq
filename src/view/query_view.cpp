@@ -19,13 +19,11 @@ QueryView::~QueryView() {
   // remove reference
   matcher = NULL;
   dataList = NULL;
-  index = NULL;
 }
 
-void QueryView::setup(string *str, vector<string> *list, int *idx) {
+void QueryView::setup(string *str, vector<string> *list) {
   matcher = str;
   dataList = list;
-  index = idx;
 }
 
 void QueryView::draw() {
@@ -43,11 +41,11 @@ void QueryView::draw() {
   int i = 0;
   vector<string>::iterator it;
   for (it = dataList->begin(); it != dataList->end(); ++it, ++i) {
-    if (i == *index) {
-      os << toSelectedMatchText(*it, *matcher);
-    } else {
+    // if (i == *index) {
+    //   os << toSelectedMatchText(*it, *matcher);
+    // } else {
       os << toMatchText(*it, *matcher);
-    }
+    // }
     newline();
     if (i > 5) {
       break;

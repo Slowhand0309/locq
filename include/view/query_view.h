@@ -13,13 +13,12 @@ public:
 
   virtual void draw();
 
-  void setup(string *str, vector<string> *list, int *idx);
+  void setup(string *str, vector<string> *list);
 
 private:
   string toMatchText(string org, string matcher);
   string toSelectedMatchText(string org, string matcher);
 
-  int *index;
   string *matcher;
   vector<string> *dataList;
 };
