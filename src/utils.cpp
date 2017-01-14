@@ -2,7 +2,7 @@
 
 namespace locq {
 
-string Utils::replace(string &str, string &from, string &to) {
+string Utils::replace(string str, string from, string to) {
   string::size_type pos(str.find(from));
 
   for (;;) {

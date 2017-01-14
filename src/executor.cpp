@@ -9,6 +9,7 @@ Executor::Executor()
   , session(NULL)
   , qv(NULL) {
 
+  inputText = "";
   session = new Session();
 
   qv = new QueryView();
@@ -68,7 +69,9 @@ void Executor::run(bool &flag) {
 
 void Executor::handleInput() {
   char ch = session->getchar();
-  if (ch == 0x1b) {
+  if (ch == 0) {
+    // Do nothing.
+  } else if (ch == 0x1b) {
     // 'ESC' key
     loopFlag = false;
   } else {

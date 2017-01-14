@@ -16,7 +16,7 @@ public:
    * @param  to      [replace to]
    * @return         [replaced text]
    */
-  static string replace(string &str, string &from, string &to);
+  static string replace(string str, string from, string to);
 
   static void split(string &str, string &delim, vector<string> &list);
 

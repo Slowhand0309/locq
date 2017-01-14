@@ -44,7 +44,11 @@ void QueryView::draw() {
     // if (i == *index) {
     //   os << toSelectedMatchText(*it, *matcher);
     // } else {
+    if (matcher->empty()) {
+      os << *it;
+    } else {
       os << toMatchText(*it, *matcher);
+    }
     // }
     newline();
     if (i > 5) {
