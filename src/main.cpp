@@ -3,40 +3,102 @@
  * All rights reserved.
  */
 #include "view/query_view.h"
+#include "session.h"
+#include <iostream>
+#include <string>
+#include <thread>
+#include <unistd.h>
+#include <vector>
+#include <sstream>
+#include <stdlib.h>
+#include "emitter.h"
 
 using namespace locq;
 
-int main(int argc, char *argv[]) {
-#if 0
-  Session *session = new Session();
+vector<string> list;
+bool flag = true;
+Emitter emitter;
 
-  for (;;) {
-    char ch = session->getchar();
-    if (ch == 'q') {
-      break;
-    } else if (ch == 0) {
-      continue;
-    } else {
-      cout << "input --> " << ch << endl;
-      char hh = cin.get();
-      cout << "cin --> " << hh << endl;
+void worker() {
+  string line;
+  while(flag && getline(cin, line)) {
+    // parse
+    vector<string> v;
+    string elem;
+    for (string::iterator it = line.begin(); it != line.end(); ++it) {
+      char c = *it;
+      if (c == ' ' && !elem.empty()) {
+        v.push_back(elem);
+        elem.clear();
+      } else {
+        elem += c;
+      }
+    }
+    if (!elem.empty()) {
+      v.push_back(elem);
+    }
+    if (v.size() > 5) {
+      list.push_back(v[5]);
     }
   }
+  flag = false;
+}
 
-  delete session;
-#endif
+void handleInput(Session *session, string &text) {
+  char ch = session->getchar();
+  if (ch == 'q') {
+    flag = false;
+  } else {
+    text += ch;
+  }
+}
+
+/**
+ * Entry point.
+ *
+ * @method main
+ * @param  argc
+ * @param  argv
+ * @return      [result code]
+ */
+int main(int argc, char *argv[]) {
+
+  thread th(worker);
 
   int index = 0;
-  string text = "android";
-  vector<string> list;
-  list.push_back("12345fdhfd_android_fdsfdsf");
-  list.push_back("67889dfsfdaandroidfdsdf");
-  list.push_back("abcder54y5ey5yfhd");
+  string inputText = "";
+
+  Session *session = new Session();
 
   QueryView *qv = new QueryView();
-  qv->setup(&text, &list, &index);
-  qv->draw();
+  qv->setup(&inputText, &list, &index);
+
+  // main loop.
+  while (flag) {
+    //clearScreen();
+    handleInput(session, inputText);
+    qv->draw();
+  }
+
   delete qv;
+  delete session;
+  // Session *session = new Session();
+  //
+  // for (;;) {
+  //   char ch = session->getchar();
+  //   if (ch == 'q') {
+  //     break;
+  //   } else if (ch == 0) {
+  //     continue;
+  //   } else {
+  //     cout << "input --> " << ch << endl;
+  //     cout << "vector size " << list.size() << endl;
+  //   }
+  // }
+  //
+  // delete session;
+
+  th.join();
 
   return 1;
 }

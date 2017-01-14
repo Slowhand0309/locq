@@ -37,7 +37,7 @@ public:
   }
 
   virtual ~Emitter() {
-    clear();
+    empty();
   }
 
   void empty() {
@@ -58,6 +58,18 @@ public:
 
   Emitter& left(int n) {
     return emit(n, 'D');
+  }
+
+  Emitter& moveLineDown(int n) {
+    return emit(n, 'E');
+  }
+
+  Emitter& moveLineUp(int n) {
+    return emit(n, 'F');
+  }
+
+  Emitter& moveLeft(int n) {
+    return emit(n, 'G');
   }
 
   Emitter& clearLine() {

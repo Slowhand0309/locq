@@ -15,6 +15,10 @@ public:
   virtual void draw() = 0;
 
 protected:
+  void newline();
+  void clearScreen();
+
+  int lfCount;
   ostream &os;
   Emitter emitter;
 };

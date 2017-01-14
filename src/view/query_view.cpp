@@ -6,11 +6,13 @@ namespace locq {
 QueryView::QueryView()
   : View()
 {
+  lfCount = 0;
 }
 
 QueryView::QueryView(ostream &_os)
   : View(_os)
 {
+  lfCount = 0;
 }
 
 QueryView::~QueryView() {
@@ -27,20 +29,28 @@ void QueryView::setup(string *str, vector<string> *list, int *idx) {
 }
 
 void QueryView::draw() {
+
+  clearScreen();
   // draw query text.
   os << emitter.color("QUERY : ", WHITE);
-  os << *matcher << endl;
+  os << *matcher;
+  newline();
 
-  os << emitter.color(">", CYAN) << endl;
+  os << emitter.color(">", CYAN);
+  newline();
 
   // draw target list.
   int i = 0;
   vector<string>::iterator it;
   for (it = dataList->begin(); it != dataList->end(); ++it, ++i) {
     if (i == *index) {
-      os << toSelectedMatchText(*it, *matcher) << endl;
+      os << toSelectedMatchText(*it, *matcher);
     } else {
-      os << toMatchText(*it, *matcher) << endl;
+      os << toMatchText(*it, *matcher);
+    }
+    newline();
+    if (i > 5) {
+      break;
     }
   }
 }
