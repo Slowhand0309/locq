@@ -2,6 +2,10 @@
 
 namespace locq {
 
+// Min split num
+#define SPLIT_SPACE_NUM (7)
+
+
 ThreadtimeParser::ThreadtimeParser() {
 
 }
@@ -39,15 +43,32 @@ int ThreadtimeParser::parse(string message, element_t &element) {
     v.push_back(elem);
   }
 
-  if (v.size() > 6) {
+  if (v.size() > SPLIT_SPACE_NUM - 1) {
     element.date = v[0];
     element.time = v[1];
     element.pid = stoi(v[2]);
     element.tid = stoi(v[3]);
     element.priority = v[4];
     element.tag = v[5];
-    element.message = v[6];
+    if (v.size() == SPLIT_SPACE_NUM) {
+      element.message = v[6];
+    } else {
+      // Concat message.
+      string text;
+      for (int i = 6; i < v.size(); i++) {
+        text += v[i];
+        if (i != v.size() - 1) {
+          text += " ";
+        }
+      }
+      element.message = text;
+    }
+
+  } else {
+    return -1;
   }
+
+  return 1;
 }
 
 } // namespace locq

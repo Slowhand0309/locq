@@ -10,7 +10,7 @@
 
 using namespace std;
 
-typedef struct {
+typedef struct element {
   string date;
   string time;
   int uid;
@@ -20,6 +20,12 @@ typedef struct {
   string priority;
   string tag;
   string message;
+
+  element() {
+    uid = 0;
+    pid = 0;
+    tid = 0;
+  }
 } element_t;
 
 #endif // __LOCQ_H__
