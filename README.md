@@ -1,2 +1,2 @@
 # locq
-Android logcat query.
+Interactive query for logcat.

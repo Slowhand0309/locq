@@ -45,7 +45,7 @@ void Executor::exec() {
 void Executor::run(bool &flag) {
   string line;
   while(flag && getline(cin, line)) {
-
+    // TODO parse
     logList.push_back(line);
   }
   flag = false;
