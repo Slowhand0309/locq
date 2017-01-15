@@ -73,7 +73,7 @@ public:
   }
 
   Emitter& clearLine() {
-    return emit(2, 'K');
+    return emit(0, 'K');
   }
 
   Emitter& clear() {

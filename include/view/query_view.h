@@ -16,6 +16,8 @@ public:
   void setup(string *str, vector<string> *list);
 
 private:
+  void drawRecentLog();
+  
   string toMatchText(string org, string matcher);
   string toSelectedMatchText(string org, string matcher);
 

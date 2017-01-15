@@ -4,15 +4,13 @@
 namespace locq {
 
 QueryView::QueryView()
-  : View()
+  : QueryView(cout)
 {
-  lfCount = 0;
 }
 
 QueryView::QueryView(ostream &_os)
   : View(_os)
 {
-  lfCount = 0;
 }
 
 QueryView::~QueryView() {
@@ -31,13 +29,14 @@ void QueryView::draw() {
   clearScreen();
   // draw query text.
   os << emitter.color("QUERY : ", WHITE);
-  os << *matcher;
-  newline();
+  os << *matcher << endl;
 
-  os << emitter.color(">", CYAN);
-  newline();
+  os << emitter.color(">", CYAN) << endl;
 
   // draw target list.
+  drawRecentLog();
+
+#if 0
   int i = 0;
   vector<string>::iterator it;
   for (it = dataList->begin(); it != dataList->end(); ++it, ++i) {
@@ -52,6 +51,25 @@ void QueryView::draw() {
     // }
     newline();
     if (i > 5) {
+      break;
+    }
+  }
+#endif
+}
+
+void QueryView::drawRecentLog() {
+
+  int idx = 0;
+  vector<string>::reverse_iterator rit;
+  for (rit = dataList->rbegin(); rit != dataList->rend(); ++rit, ++idx) {
+    if (matcher->empty()) {
+      os << *rit << endl;
+    } else {
+      if (rit->find(*matcher) != string::npos) {
+        os << toMatchText(*rit, *matcher) << endl;
+      }
+    }
+    if (idx > 5) {
       break;
     }
   }

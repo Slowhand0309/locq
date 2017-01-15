@@ -5,22 +5,25 @@
 
 namespace locq {
 
+enum VIEWMODE {
+  NORMAL,
+  QUERY
+};
+
 class View
 {
 public:
-  View();
   View(ostream &_os);
   virtual ~View();
 
   virtual void draw() = 0;
 
 protected:
-  void newline();
   void clearScreen();
 
-  int lfCount;
   ostream &os;
   Emitter emitter;
+  VIEWMODE mode;
 };
 
 } // namespace locq
