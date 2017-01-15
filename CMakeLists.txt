@@ -8,11 +8,8 @@ include_directories(
 
 add_compile_options(-std=c++11)
 
-add_executable(locq
-  src/utils.cpp
-  src/session.cpp
-  src/view/view.cpp
-  src/view/query_view.cpp
-  src/executor.cpp
-  src/main.cpp
-)
+add_subdirectory(src)
+add_subdirectory(test)
+
+enable_testing()
+add_test(NAME locqtest COMMAND locqtest)

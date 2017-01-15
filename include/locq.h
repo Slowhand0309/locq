@@ -10,4 +10,16 @@
 
 using namespace std;
 
+typedef struct {
+  string date;
+  string time;
+  int uid;
+  int pid;
+  int tid;
+  string package;
+  string priority;
+  string tag;
+  string message;
+} element_t;
+
 #endif // __LOCQ_H__

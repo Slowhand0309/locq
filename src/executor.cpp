@@ -45,24 +45,7 @@ void Executor::exec() {
 void Executor::run(bool &flag) {
   string line;
   while(flag && getline(cin, line)) {
-    // parse
-    // vector<string> v;
-    // string elem;
-    // for (string::iterator it = line.begin(); it != line.end(); ++it) {
-    //   char c = *it;
-    //   if (c == ' ' && !elem.empty()) {
-    //     v.push_back(elem);
-    //     elem.clear();
-    //   } else {
-    //     elem += c;
-    //   }
-    // }
-    // if (!elem.empty()) {
-    //   v.push_back(elem);
-    // }
-    // if (v.size() > 5) {
-    //   logList.push_back(v[5]);
-    // }
+
     logList.push_back(line);
   }
   flag = false;
