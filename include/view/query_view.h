@@ -13,16 +13,16 @@ public:
 
   virtual void draw();
 
-  void setup(string *str, vector<string> *list);
+  void setup(string *str, vector<element_t> *list);
 
 private:
   void drawRecentLog();
-  
+
   string toMatchText(string org, string matcher);
   string toSelectedMatchText(string org, string matcher);
 
   string *matcher;
-  vector<string> *dataList;
+  vector<element_t> *dataList;
 };
 
 } // namespace locq

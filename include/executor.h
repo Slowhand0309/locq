@@ -3,6 +3,7 @@
 #include "locq.h"
 #include "session.h"
 #include "view/query_view.h"
+#include "parser/parser.h"
 
 namespace locq {
 
@@ -17,11 +18,13 @@ public:
 private:
   void run(bool &flag);
   void handleInput();
+  Parser *getParser(string message);
 
   Session *session;
   QueryView *qv;
+  Parser *parser;
 
-  vector<string> logList;
+  vector<element_t> logList;
   string inputText;
   bool loopFlag;
 };

@@ -20,7 +20,8 @@ typedef struct element {
   string priority;
   string tag;
   string message;
-
+  string orgmsg;
+  
   element() {
     uid = 0;
     pid = 0;

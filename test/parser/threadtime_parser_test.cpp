@@ -42,6 +42,7 @@ TEST(ThreadtimeParser, parse_normal) {
   EXPECT_STREQ("I", element.priority.c_str());
   EXPECT_STREQ("TAG:", element.tag.c_str());
   EXPECT_STREQ("message", element.message.c_str());
+  EXPECT_STREQ(testlog.c_str(), element.orgmsg.c_str());
   EXPECT_EQ(1, ret);
 
   delete ttparser;
@@ -75,6 +76,7 @@ TEST(ThreadtimeParser, parse_included_space) {
   EXPECT_STREQ("D", element.priority.c_str());
   EXPECT_STREQ("ProcessStatsService:", element.tag.c_str());
   EXPECT_STREQ("Prepared write state in 1ms", element.message.c_str());
+  EXPECT_STREQ(testlog.c_str(), element.orgmsg.c_str());
   EXPECT_EQ(1, ret);
 
   delete ttparser;
@@ -97,6 +99,7 @@ TEST(ThreadtimeParser, parse_bad_message) {
   EXPECT_TRUE(element.priority.empty());
   EXPECT_TRUE(element.tag.empty());
   EXPECT_TRUE(element.message.empty());
+  EXPECT_TRUE(element.orgmsg.empty());
   EXPECT_EQ(-1, ret);
 
   delete ttparser;

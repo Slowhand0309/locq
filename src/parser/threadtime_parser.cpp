@@ -63,6 +63,7 @@ int ThreadtimeParser::parse(string message, element_t &element) {
       }
       element.message = text;
     }
+    element.orgmsg = message;
 
   } else {
     return -1;

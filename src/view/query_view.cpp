@@ -19,7 +19,7 @@ QueryView::~QueryView() {
   dataList = NULL;
 }
 
-void QueryView::setup(string *str, vector<string> *list) {
+void QueryView::setup(string *str, vector<element_t> *list) {
   matcher = str;
   dataList = list;
 }
@@ -60,13 +60,13 @@ void QueryView::draw() {
 void QueryView::drawRecentLog() {
 
   int idx = 0;
-  vector<string>::reverse_iterator rit;
+  vector<element_t>::reverse_iterator rit;
   for (rit = dataList->rbegin(); rit != dataList->rend(); ++rit, ++idx) {
     if (matcher->empty()) {
-      os << *rit << endl;
+      os << rit->orgmsg << endl;
     } else {
-      if (rit->find(*matcher) != string::npos) {
-        os << toMatchText(*rit, *matcher) << endl;
+      if (rit->orgmsg.find(*matcher) != string::npos) {
+        os << toMatchText(rit->orgmsg, *matcher) << endl;
       }
     }
     if (idx > 5) {
