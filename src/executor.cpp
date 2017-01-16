@@ -28,6 +28,8 @@ Executor::~Executor() {
   if (parser != NULL) {
     delete parser;
   }
+  // Delete option
+  Option::release();
 }
 
 void Executor::exec() {

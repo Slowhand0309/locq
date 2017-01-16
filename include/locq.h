@@ -10,6 +10,35 @@
 
 using namespace std;
 
+/**
+ * SGR color enum.
+ */
+enum ANSICOLOR {
+  BLACK = 30,
+  RED,
+  GREEN,
+  YELLOW,
+  BLUE,
+  MAGENTA,
+  CYAN,
+  WHITE
+};
+
+/**
+ * Option struct.
+ */
+typedef struct {
+  // Priority color
+  ANSICOLOR debugColor;
+  ANSICOLOR infoColor;
+  ANSICOLOR warnColor;
+  ANSICOLOR errorColor;
+  ANSICOLOR verboseColor;
+} option_t;
+
+/**
+ * Log elements.
+ */
 typedef struct element {
   string date;
   string time;
@@ -21,7 +50,7 @@ typedef struct element {
   string tag;
   string message;
   string orgmsg;
-  
+
   element() {
     uid = 0;
     pid = 0;

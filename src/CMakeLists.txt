@@ -10,6 +10,7 @@ add_compile_options(-std=c++11)
 
 set(locq_src
   utils.cpp
+  option.cpp
   session.cpp
   view/view.cpp
   view/query_view.cpp

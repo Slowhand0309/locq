@@ -2,6 +2,7 @@
 #define __VIEW_H__
 #include "locq.h"
 #include "emitter.h"
+#include "option.h"
 
 namespace locq {
 
@@ -24,6 +25,7 @@ protected:
   ostream &os;
   Emitter emitter;
   VIEWMODE mode;
+  Option *option;
 };
 
 } // namespace locq

@@ -6,6 +6,7 @@ View::View(ostream &_os)
   : os(_os)
 {
   mode = NORMAL;
+  option = Option::getInstance();
 }
 
 View::~View() {

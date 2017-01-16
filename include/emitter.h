@@ -5,20 +5,6 @@
 namespace locq {
 
 /**
- * SGR color enum.
- */
-enum ANSICOLOR {
-  BLACK = 30,
-  RED,
-  GREEN,
-  YELLOW,
-  BLUE,
-  MAGENTA,
-  CYAN,
-  WHITE
-};
-
-/**
  * ANSI escape sequence manipulator class.
  */
 class Emitter {

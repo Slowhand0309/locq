@@ -63,7 +63,8 @@ void QueryView::drawRecentLog() {
   vector<element_t>::reverse_iterator rit;
   for (rit = dataList->rbegin(); rit != dataList->rend(); ++rit, ++idx) {
     if (matcher->empty()) {
-      os << rit->orgmsg << endl;
+      //os << rit->orgmsg << endl;
+      drawPriorityColor(*rit);
     } else {
       if (rit->orgmsg.find(*matcher) != string::npos) {
         os << toMatchText(rit->orgmsg, *matcher) << endl;
@@ -73,6 +74,22 @@ void QueryView::drawRecentLog() {
       break;
     }
   }
+}
+
+void QueryView::drawPriorityColor(element_t &elem) {
+  ANSICOLOR color = WHITE; // default
+  if (elem.priority == "D") {
+    color = option->debugColor();
+  } else if (elem.priority == "I") {
+    color = option->infoColor();
+  } else if (elem.priority == "W") {
+    color = option->warnColor();
+  } else if (elem.priority == "E") {
+    color = option->errorColor();
+  } else if (elem.priority == "V") {
+    color = option->verboseColor();
+  }
+  os << emitter.color(elem.orgmsg, color) << endl;
 }
 
 string QueryView::toMatchText(string org, string matcher) {
