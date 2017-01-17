@@ -8,6 +8,7 @@ include_directories(
 )
 
 add_executable(locqtest
+  emitter_test.cpp
   parser/threadtime_parser_test.cpp
 )
 
