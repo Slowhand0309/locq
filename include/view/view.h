@@ -20,7 +20,8 @@ public:
   virtual void draw() = 0;
 
 protected:
-  void clearScreen();
+  virtual void clearScreen();
+  virtual ANSICOLOR toColor(string &priority);
 
   ostream &os;
   Emitter emitter;

@@ -18,7 +18,8 @@ public:
 private:
   void drawRecentLog();
   void drawPriorityColor(element_t &elem);
-  
+  void drawMatchPriorityColor(element_t &elem, string &matcher);
+
   string toMatchText(string org, string matcher);
   string toSelectedMatchText(string org, string matcher);
 

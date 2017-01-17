@@ -67,7 +67,7 @@ void QueryView::drawRecentLog() {
       drawPriorityColor(*rit);
     } else {
       if (rit->orgmsg.find(*matcher) != string::npos) {
-        os << toMatchText(rit->orgmsg, *matcher) << endl;
+        drawMatchPriorityColor(*rit, *matcher);
       }
     }
     if (idx > 5) {
@@ -77,19 +77,28 @@ void QueryView::drawRecentLog() {
 }
 
 void QueryView::drawPriorityColor(element_t &elem) {
-  ANSICOLOR color = WHITE; // default
-  if (elem.priority == "D") {
-    color = option->debugColor();
-  } else if (elem.priority == "I") {
-    color = option->infoColor();
-  } else if (elem.priority == "W") {
-    color = option->warnColor();
-  } else if (elem.priority == "E") {
-    color = option->errorColor();
-  } else if (elem.priority == "V") {
-    color = option->verboseColor();
-  }
+  ANSICOLOR color = toColor(elem.priority);
   os << emitter.color(elem.orgmsg, color) << endl;
+}
+
+void QueryView::drawMatchPriorityColor(element_t &elem, string &matcher) {
+  ANSICOLOR color = toColor(elem.priority);
+
+  // split text.
+  vector<string> v;
+  Utils::split(elem.orgmsg, matcher, v);
+
+  ostringstream stream;
+  vector<string>::iterator it;
+  for (it = v.begin(); it != v.end(); ++it) {
+    string text = *it;
+    if (text == matcher) {
+      text = emitter.color(*it, CYAN).getRow();
+      emitter.empty();
+    }
+    stream << emitter.color(text, color);
+  }
+  os << stream.str() << endl;
 }
 
 string QueryView::toMatchText(string org, string matcher) {
