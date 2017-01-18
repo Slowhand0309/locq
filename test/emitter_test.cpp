@@ -32,21 +32,44 @@ TEST(Emitter, moving) {
  * Test for color escape sequence.
  */
 TEST(Emitter, color) {
- Emitter emitter;
- EXPECT_STREQ("\e[30mblack\e[0m", emitter.color("black", BLACK).getRow().c_str());
- emitter.empty();
- EXPECT_STREQ("\e[31mred\e[0m", emitter.color("red", RED).getRow().c_str());
- emitter.empty();
- EXPECT_STREQ("\e[32mgreen\e[0m", emitter.color("green", GREEN).getRow().c_str());
- emitter.empty();
- EXPECT_STREQ("\e[33myellow\e[0m", emitter.color("yellow", YELLOW).getRow().c_str());
- emitter.empty();
- EXPECT_STREQ("\e[34mblue\e[0m", emitter.color("blue", BLUE).getRow().c_str());
- emitter.empty();
- EXPECT_STREQ("\e[35mmagenta\e[0m", emitter.color("magenta", MAGENTA).getRow().c_str());
- emitter.empty();
- EXPECT_STREQ("\e[36mcyan\e[0m", emitter.color("cyan", CYAN).getRow().c_str());
- emitter.empty();
- EXPECT_STREQ("\e[37mwhite\e[0m", emitter.color("white", WHITE).getRow().c_str());
- emitter.empty();
+  Emitter emitter;
+  EXPECT_STREQ("\e[30mblack\e[0m", emitter.color("black", BLACK).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[31mred\e[0m", emitter.color("red", RED).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[32mgreen\e[0m", emitter.color("green", GREEN).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[33myellow\e[0m", emitter.color("yellow", YELLOW).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[34mblue\e[0m", emitter.color("blue", BLUE).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[35mmagenta\e[0m", emitter.color("magenta", MAGENTA).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[36mcyan\e[0m", emitter.color("cyan", CYAN).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[37mwhite\e[0m", emitter.color("white", WHITE).getRow().c_str());
+  emitter.empty();
+}
+
+/**
+ * Test for background escape sequence.
+ */
+TEST(Emitter, background) {
+  Emitter emitter;
+  EXPECT_STREQ("\e[40mblack\e[0m", emitter.background("black", BLACK).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[41mred\e[0m", emitter.background("red", RED).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[42mgreen\e[0m", emitter.background("green", GREEN).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[43myellow\e[0m", emitter.background("yellow", YELLOW).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[44mblue\e[0m", emitter.background("blue", BLUE).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[45mmagenta\e[0m", emitter.background("magenta", MAGENTA).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[46mcyan\e[0m", emitter.background("cyan", CYAN).getRow().c_str());
+  emitter.empty();
+  EXPECT_STREQ("\e[47mwhite\e[0m", emitter.background("white", WHITE).getRow().c_str());
+  emitter.empty();
 }
