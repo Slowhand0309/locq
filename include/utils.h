@@ -18,7 +18,7 @@ public:
    */
   static string replace(string str, string from, string to);
 
-  static void split(string &str, string &delim, vector<string> &list);
+  static void split(string &str, string &delim, vector<string> &list, bool includeDelim = false);
 
 private:
   // Not construct.

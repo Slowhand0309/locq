@@ -16,7 +16,7 @@ string Utils::replace(string str, string from, string to) {
 }
 
 
-void Utils::split(string &str, string &delim, vector<string> &list) {
+void Utils::split(string &str, string &delim, vector<string> &list, bool includeDelim) {
 
   list.clear();
   string::size_type pos = 0;
@@ -32,7 +32,9 @@ void Utils::split(string &str, string &delim, vector<string> &list) {
     } else {
       list.push_back(str.substr(pos, p - pos));
     }
-    list.push_back(delim);
+    if (includeDelim) {
+      list.push_back(delim);      
+    }
     pos = p + delim.size();
   }
 }

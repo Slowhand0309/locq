@@ -86,7 +86,7 @@ void QueryView::drawMatchPriorityColor(element_t &elem, string &matcher) {
 
   // split text.
   vector<string> v;
-  Utils::split(elem.orgmsg, matcher, v);
+  Utils::split(elem.orgmsg, matcher, v, true);
 
   ostringstream stream;
   vector<string>::iterator it;
@@ -112,7 +112,7 @@ string QueryView::toMatchText(string org, string matcher) {
 string QueryView::toSelectedMatchText(string org, string matcher) {
   // split text.
   vector<string> v;
-  Utils::split(org, matcher, v);
+  Utils::split(org, matcher, v, true);
 
   ostringstream stream;
   vector<string>::iterator it;
