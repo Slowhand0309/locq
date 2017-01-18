@@ -16,7 +16,7 @@ public:
   void exec();
 
 private:
-  void run(bool &flag);
+  void run();
   void handleInput();
   Parser *getParser(string message);
 

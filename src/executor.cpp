@@ -33,7 +33,7 @@ Executor::~Executor() {
 }
 
 void Executor::exec() {
-  thread th(&Executor::run, this, ref(loopFlag));
+  thread th(&Executor::run, this);
 
   // main loop.
   while (loopFlag) {
@@ -49,9 +49,9 @@ void Executor::exec() {
   th.detach();
 }
 
-void Executor::run(bool &flag) {
+void Executor::run() {
   string line;
-  while(flag && getline(cin, line)) {
+  while(getline(cin, line)) {
     // parse
     if (parser == NULL) {
       parser = getParser(line);
@@ -61,7 +61,6 @@ void Executor::run(bool &flag) {
       logList.push_back(element);
     }
   }
-  flag = false;
 }
 
 void Executor::handleInput() {
@@ -71,6 +70,11 @@ void Executor::handleInput() {
   } else if (ch == 0x1b) {
     // 'ESC' key
     loopFlag = false;
+  } else if (ch == 0x7F) {
+    // 'Back space' key
+    if (!inputText.empty()) {
+      inputText = inputText.substr(0, inputText.size() - 1);
+    }
   } else {
     inputText += ch;
   }
