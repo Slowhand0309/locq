@@ -1,7 +1,9 @@
 #include "executor.h"
 #include "parser/threadtime_parser.h"
 #include <thread>
+#include <sys/types.h>
 #include <unistd.h>
+#include <signal.h>
 
 namespace locq {
 
@@ -45,6 +47,9 @@ void Executor::exec() {
     // sleep
     usleep(50000);
   }
+
+  // restart adb server
+  system("adb kill-server && adb start-server");
 
   th.detach();
 }
