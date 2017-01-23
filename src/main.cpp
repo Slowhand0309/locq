@@ -3,6 +3,7 @@
  * All rights reserved.
  */
 #include "executor.h"
+#include "option.h"
 
 using namespace locq;
 
@@ -16,7 +17,10 @@ using namespace locq;
  */
 int main(int argc, char *argv[]) {
 
-  Executor executor;
+  option_t options;
+  Option::parse(options, argc, argv);
+
+  Executor executor(options);
   executor.exec();
 
   return 1;

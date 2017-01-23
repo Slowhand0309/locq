@@ -2,11 +2,11 @@
 
 namespace locq {
 
-View::View(ostream &_os)
+View::View(ostream &_os, option_t &_options)
   : os(_os)
+  , options(_options)
 {
   mode = NORMAL;
-  option = Option::getInstance();
 }
 
 View::~View() {
@@ -20,15 +20,15 @@ void View::clearScreen() {
 ANSICOLOR View::toColor(string &priority) {
   ANSICOLOR color = WHITE; // default
   if (priority == "D") {
-    color = option->debugColor();
+    color = options.debugColor;
   } else if (priority == "I") {
-    color = option->infoColor();
+    color = options.infoColor;
   } else if (priority == "W") {
-    color = option->warnColor();
+    color = options.warnColor;
   } else if (priority == "E") {
-    color = option->errorColor();
+    color = options.errorColor;
   } else if (priority == "V") {
-    color = option->verboseColor();
+    color = options.verboseColor;
   }
   return color;
 }

@@ -7,7 +7,7 @@
 
 namespace locq {
 
-Executor::Executor()
+Executor::Executor(option_t &options)
   : loopFlag(true)
   , session(NULL)
   , qv(NULL)
@@ -16,7 +16,7 @@ Executor::Executor()
   inputText = "";
   session = new Session();
 
-  qv = new QueryView();
+  qv = new QueryView(options);
   qv->setup(&inputText, &logList);
 }
 
@@ -30,8 +30,6 @@ Executor::~Executor() {
   if (parser != NULL) {
     delete parser;
   }
-  // Delete option
-  Option::release();
 }
 
 void Executor::exec() {

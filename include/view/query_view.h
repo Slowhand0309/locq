@@ -7,8 +7,8 @@ namespace locq {
 class QueryView : public View
 {
 public:
-  QueryView();
-  QueryView(ostream &_os);
+  QueryView(option_t &options);
+  QueryView(ostream &_os, option_t &options);
   virtual ~QueryView();
 
   virtual void draw();

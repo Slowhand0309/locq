@@ -3,13 +3,13 @@
 
 namespace locq {
 
-QueryView::QueryView()
-  : QueryView(cout)
+QueryView::QueryView(option_t &options)
+  : QueryView(cout, options)
 {
 }
 
-QueryView::QueryView(ostream &_os)
-  : View(_os)
+QueryView::QueryView(ostream &_os, option_t &options)
+  : View(_os, options)
 {
 }
 

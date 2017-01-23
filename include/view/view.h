@@ -14,7 +14,7 @@ enum VIEWMODE {
 class View
 {
 public:
-  View(ostream &_os);
+  View(ostream &_os, option_t &_options);
   virtual ~View();
 
   virtual void draw() = 0;
@@ -26,7 +26,7 @@ protected:
   ostream &os;
   Emitter emitter;
   VIEWMODE mode;
-  Option *option;
+  option_t &options;
 };
 
 } // namespace locq

@@ -7,24 +7,28 @@ namespace locq {
 class Option
 {
 public:
-  static Option *getInstance();
-  static void release();
 
-  ANSICOLOR debugColor();
-  ANSICOLOR infoColor();
-  ANSICOLOR warnColor();
-  ANSICOLOR errorColor();
-  ANSICOLOR verboseColor();
+  /**
+   * Parse arguments.
+   *
+   * @method parse
+   * @param  options option_t struct
+   * @param  argc
+   * @param  argv
+   */
+  static void parse(option_t &options, int argc, char *argv[]);
+
+  /**
+   * Initialize option_t struct.
+   *
+   * @method initialize
+   * @param  options    option_t struct
+   */
+  static void initialize(option_t &options);
 
 private:
-  static Option *instance;
-
   Option();
   ~Option();
-
-  void init();
-
-  option_t options;
 };
 
 } // namespace locq

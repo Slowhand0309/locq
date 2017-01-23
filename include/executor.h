@@ -10,7 +10,7 @@ namespace locq {
 class Executor
 {
 public:
-  Executor();
+  Executor(option_t &options);
   virtual ~Executor();
 
   void exec();

@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 project(locq)
 
+add_definitions(-DVERSION="0.0.1")
+
 include_directories(
   include
 )

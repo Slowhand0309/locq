@@ -1,32 +1,30 @@
 #include "option.h"
+#include <getopt.h>
 
 namespace locq {
 
-Option *Option::instance = NULL;
-
-Option *Option::getInstance() {
-  if (Option::instance == NULL) {
-    Option::instance = new Option();
-  }
-  return instance;
-}
-
-void Option::release() {
-  if (Option::instance != NULL) {
-    delete Option::instance;
-    Option::instance = NULL;
-  }
-}
-
 Option::Option() {
-  init();
 }
 
 Option::~Option() {
-
 }
 
-void Option::init() {
+void Option::parse(option_t &options, int argc, char *argv[]) {
+
+  initialize(options);
+
+  int r = 0;
+  while ((r = getopt(argc, argv, "v")) != -1) {
+    switch (r) {
+      case 'v':
+        // Show version.
+        cout << "locq " << VERSION << " (c) Slowhand0309\n" << endl;
+        exit(EXIT_SUCCESS);
+    }
+  }
+}
+
+void Option::initialize(option_t &options) {
 
   options.debugColor = MAGENTA;
   options.infoColor = BLUE;
@@ -34,26 +32,6 @@ void Option::init() {
   options.errorColor = RED;
   options.verboseColor = WHITE;
 
-}
-
-ANSICOLOR Option::debugColor() {
-  return options.debugColor;
-}
-
-ANSICOLOR Option::infoColor() {
-  return options.infoColor;
-}
-
-ANSICOLOR Option::warnColor() {
-  return options.warnColor;
-}
-
-ANSICOLOR Option::errorColor() {
-  return options.errorColor;
-}
-
-ANSICOLOR Option::verboseColor() {
-  return options.verboseColor;
 }
 
 } // namespace locq
