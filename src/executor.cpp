@@ -4,8 +4,21 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <signal.h>
+#include <regex>
 
 namespace locq {
+
+// logcat -v brief
+#define FMT_REGEX_BRIEF "^[VDIWEF]\\/[a-zA-Z\\d\\s-]+\\([\\s|\\d]\\d*\\):\\s"
+// logcat -v process
+#define FMT_REGEX_PROCESS "^[VDIWEF]\\([\\s|\\d]\\d*\\)\\s"
+// logcat -v tag
+#define FMT_REGEX_TAG "^[VDIWEF]\\/[a-zA-Z\\d\\s-]+:\\s"
+// logcat -v time
+#define FMT_REGEX_TIME  "^\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}.\\d{3}\\s[VDIWEF]\\/[a-zA-Z\\d\\s-]+\\([\\s|\\d]\\d*\\):\\s"
+// logcat -v threadtime
+#define FMT_REGEX_THREADTIME  "^\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2}.\\d{3}\\s+\\d+\\s+\\d+\\s+[VDIWEF]\\s+[a-zA-Z\\d\\s-]+:\\s"
+
 
 Executor::Executor(option_t &options)
   : loopFlag(true)
@@ -60,7 +73,7 @@ void Executor::run() {
       parser = getParser(line);
     }
     element_t element;
-    if (parser->parse(line, element) > 0) {
+    if (parser != NULL && parser->parse(line, element) > 0) {
       logList.push_back(element);
     }
   }
@@ -84,8 +97,34 @@ void Executor::handleInput() {
 }
 
 Parser *Executor::getParser(string message) {
-  // TODO
-  return new ThreadtimeParser();
+
+  regex re_brief(FMT_REGEX_BRIEF);
+  if (regex_search(message, re_brief)) {
+    // logcat -v brief
+    // TODO return parser
+  }
+  regex re_process(FMT_REGEX_PROCESS);
+  if (regex_search(message, re_process)) {
+    // logcat -v process
+    // TODO return parser
+  }
+  regex re_tag(FMT_REGEX_TAG);
+  if (regex_search(message, re_tag)) {
+    // logcat -v tag
+    // TODO return parser
+  }
+  regex re_time(FMT_REGEX_TIME);
+  if (regex_search(message, re_time)) {
+    // logcat -v time
+    // TODO return parser
+  }
+
+  regex re_threadtime(FMT_REGEX_THREADTIME);
+  if (regex_search(message, re_threadtime)) {
+    // logcat -v threadtime
+    return new ThreadtimeParser();
+  }
+  return NULL;
 }
 
 } // namespace locq

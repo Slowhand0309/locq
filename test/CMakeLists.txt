@@ -11,6 +11,7 @@ add_executable(locqtest
   emitter_test.cpp
   utils_test.cpp
   parser/threadtime_parser_test.cpp
+  parser/regex_parser.cpp
 )
 
 target_link_libraries(locqtest
