@@ -8,17 +8,6 @@
 
 namespace locq {
 
-// logcat -v brief
-#define FMT_REGEX_BRIEF "^[VDIWEF]\\/[a-zA-Z\\d\\s-]+\\([\\s|\\d]\\d*\\):\\s"
-// logcat -v process
-#define FMT_REGEX_PROCESS "^[VDIWEF]\\([\\s|\\d]\\d*\\)\\s"
-// logcat -v tag
-#define FMT_REGEX_TAG "^[VDIWEF]\\/[a-zA-Z\\d\\s-]+:\\s"
-// logcat -v time
-#define FMT_REGEX_TIME  "^\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}.\\d{3}\\s[VDIWEF]\\/[a-zA-Z\\d\\s-]+\\([\\s|\\d]\\d*\\):\\s"
-// logcat -v threadtime
-#define FMT_REGEX_THREADTIME  "^\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2}.\\d{3}\\s+\\d+\\s+\\d+\\s+[VDIWEF]\\s+[a-zA-Z\\d\\s-]+:\\s"
-
 
 Executor::Executor(option_t &options)
   : loopFlag(true)

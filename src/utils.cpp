@@ -1,4 +1,6 @@
 #include "utils.h"
+#include <functional>
+#include <algorithm>
 
 namespace locq {
 
@@ -33,10 +35,25 @@ void Utils::split(string &str, string &delim, vector<string> &list, bool include
       list.push_back(str.substr(pos, p - pos));
     }
     if (includeDelim) {
-      list.push_back(delim);      
+      list.push_back(delim);
     }
     pos = p + delim.size();
   }
+}
+
+void Utils::ltrim(string &str) {
+  string::const_iterator p = find_if(str.begin(), str.end(), not1(ptr_fun<int, int>(isspace)));
+  str.erase(str.begin(), p);
+}
+
+void Utils::rtrim(string &str) {
+  string::const_iterator p = find_if(str.rbegin(), str.rend(), not1(ptr_fun<int, int>(isspace))).base();
+  str.erase(p, str.end());
+}
+
+void Utils::trim(string &str) {
+  rtrim(str);
+  ltrim(str);
 }
 
 } // namespace locq

@@ -46,3 +46,45 @@ TEST(Utils, split) {
   EXPECT_STREQ(delim.c_str(), result2[3].c_str());
   EXPECT_STREQ("data2", result2[4].c_str());
 }
+
+/**
+ * Test for ltrim string.
+ */
+TEST(Utils, ltrim) {
+  // ltrim
+  string str1 = " trim left side. ";
+  Utils::ltrim(str1);
+  EXPECT_STREQ("trim left side. ", str1.c_str());
+
+  string str2 = "not space left. ";
+  Utils::ltrim(str2);
+  EXPECT_STREQ("not space left. ", str2.c_str());
+}
+
+/**
+ * Test for rtrim string.
+ */
+TEST(Utils, rtrim) {
+  // ltrim
+  string str1 = " trim right side. ";
+  Utils::rtrim(str1);
+  EXPECT_STREQ(" trim right side.", str1.c_str());
+
+  string str2 = " not space right.";
+  Utils::rtrim(str2);
+  EXPECT_STREQ(" not space right.", str2.c_str());
+}
+
+/**
+ * Test for trim string.
+ */
+TEST(Utils, trim) {
+  // ltrim
+  string str1 = "  trim both side.  ";
+  Utils::trim(str1);
+  EXPECT_STREQ("trim both side.", str1.c_str());
+
+  string str2 = "not space both side.";
+  Utils::trim(str2);
+  EXPECT_STREQ("not space both side.", str2.c_str());
+}

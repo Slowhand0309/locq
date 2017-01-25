@@ -10,6 +10,21 @@
 
 using namespace std;
 
+namespace locq {
+
+// logcat -v brief
+#define FMT_REGEX_BRIEF "^([VDIWEF])\\/([a-zA-Z\\s\\d-]+)\\(([\\s|\\d]\\d*)\\):\\s(.*)"
+// logcat -v process
+#define FMT_REGEX_PROCESS "^([VDIWEF])\\(([\\s|\\d]\\d*)\\)\\s(.*)\\(([a-zA-Z\\s\\d-]+)\\)"
+// logcat -v tag
+#define FMT_REGEX_TAG "^([VDIWEF])\\/([a-zA-Z\\s\\d-]+):\\s(.*)"
+// logcat -v time
+#define FMT_REGEX_TIME  "^(\\d{2}-\\d{2})\\s(\\d{2}:\\d{2}:\\d{2}.\\d{3})\\s([VDIWEF])\\/([a-zA-Z\\s\\d-]+)\\(([\\s|\\d]\\d*)\\):\\s(.*)"
+// logcat -v threadtime
+#define FMT_REGEX_THREADTIME  "^(\\d{2}-\\d{2})\\s+(\\d{2}:\\d{2}:\\d{2}.\\d{3})\\s+(\\d+)\\s+(\\d+)\\s+([VDIWEF])\\s+([a-zA-Z\\s\\d-]+):\\s(.*)"
+
+
+
 /**
  * SGR color enum.
  */
@@ -57,5 +72,7 @@ typedef struct element {
     tid = 0;
   }
 } element_t;
+
+} // namespace locq
 
 #endif // __LOCQ_H__

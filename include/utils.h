@@ -20,6 +20,10 @@ public:
 
   static void split(string &str, string &delim, vector<string> &list, bool includeDelim = false);
 
+  static void ltrim(string &str);
+  static void rtrim(string &str);
+  static void trim(string &str);
+
 private:
   // Not construct.
   Utils() {};

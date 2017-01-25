@@ -10,6 +10,7 @@ include_directories(
 add_executable(locqtest
   emitter_test.cpp
   utils_test.cpp
+  parser/brief_parser_test.cpp
   parser/threadtime_parser_test.cpp
   parser/regex_parser.cpp
 )
