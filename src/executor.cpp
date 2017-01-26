@@ -1,4 +1,6 @@
 #include "executor.h"
+#include "parser/brief_parser.h"
+#include "parser/process_parser.h"
 #include "parser/threadtime_parser.h"
 #include <thread>
 #include <sys/types.h>
@@ -90,12 +92,12 @@ Parser *Executor::getParser(string message) {
   regex re_brief(FMT_REGEX_BRIEF);
   if (regex_search(message, re_brief)) {
     // logcat -v brief
-    // TODO return parser
+    return new BriefParser();
   }
   regex re_process(FMT_REGEX_PROCESS);
   if (regex_search(message, re_process)) {
     // logcat -v process
-    // TODO return parser
+    return new ProcessParser();
   }
   regex re_tag(FMT_REGEX_TAG);
   if (regex_search(message, re_tag)) {

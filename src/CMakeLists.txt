@@ -16,6 +16,7 @@ set(locq_src
   view/query_view.cpp
   parser/parser.cpp
   parser/brief_parser.cpp
+  parser/process_parser.cpp
   parser/threadtime_parser.cpp
   executor.cpp
 )
