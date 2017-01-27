@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 FIND_PACKAGE (GTest)
+FIND_PACKAGE (Threads)
 
 include_directories(
   ${GTEST_INCLUDE_DIRS}
@@ -18,6 +19,6 @@ add_executable(locqtest
 
 target_link_libraries(locqtest
   ${GTEST_BOTH_LIBRARIES}
-  pthread
+  ${CMAKE_THREAD_LIBS_INIT}
   locq_lib
 )
