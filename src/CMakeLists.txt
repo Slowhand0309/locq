@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 project(locq)
 
+FIND_PACKAGE (Threads)
+
 include_directories(
   ${PROJECT_SOURCE_DIR}/include
 )
@@ -27,4 +29,7 @@ add_library(locq_lib STATIC
 add_executable(locq
   main.cpp
 )
-target_link_libraries(locq locq_lib)
+target_link_libraries(locq
+  ${CMAKE_THREAD_LIBS_INIT}
+  locq_lib
+)
