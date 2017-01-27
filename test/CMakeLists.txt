@@ -18,5 +18,6 @@ add_executable(locqtest
 
 target_link_libraries(locqtest
   ${GTEST_BOTH_LIBRARIES}
+  pthread
   locq_lib
 )
